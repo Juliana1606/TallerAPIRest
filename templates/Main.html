@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento HTML</title>
+    <link rel="stylesheet" href="static/Styles.css">
+</head>
+<body>
+
+    <div class="contenedor" id="contenedor-tarjetas">
+        <!-- Aquí se cargarán dinámicamente las tarjetas -->
+    </div>
+
+    <script>
+        const url = 'http://127.0.0.1:5000/api/info_tarjetas'; // URL de la API de Flask
+
+        // Obtener los datos de las tarjetas desde la API
+        fetch(url)
+            .then(response => response.json()) // Convertir la respuesta a JSON
+            .then(data => {
+                const contenedor = document.getElementById('contenedor-tarjetas');
+                
+                // Recorrer las tarjetas y agregarlas al contenedor
+                data.forEach(item => {
+                    const tarjeta = document.createElement('div');
+                    tarjeta.classList.add('tarjeta');
+                    tarjeta.innerHTML = `
+                        <img src="${item.enlace}" alt="${item.titulo}">
+                        <h2>${item.titulo}</h2>
+                        <p>${item.descripcion}</p>
+                        <a href="${item.enlace}" class="boton" target="_blank">Ver más</a>
+                    `;
+                    contenedor.appendChild(tarjeta);
+                });
+            })
+            .catch(error => console.error('Error al cargar las tarjetas:', error));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    
+    justify-content: center;
+    align-items: center;
+    display:grid;
+    grid-template-columns: repeat(8,1fr);
+     grid-template-rows: 20% 1fr 10%;
+    
+}
+
+
+.contenedor {
+  display: flex; 
+  grid-column: 2 / 8;
+  grid-row: 2;
+  flex-direction: row; /* Cambia a columna para apilar las tarjetas */
+  gap: 20px;
+  padding: 10px;
+  background-color: #ccc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;  /* Permite que las tarjetas se ajusten y se muevan a la siguiente línea */
+}
+
+/* Tarjetas */
+.tarjeta {
+display: grid;
+grid-template-rows: 35% auto 1fr 10% 5%; /* Ajuste de filas */
+width: 350px; /* Ancho fijo */
+height: 400px; /* Altura fija */
+background-color: white;
+border-radius: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align: center;
+overflow: hidden; /* Evita que el contenido desborde */
+text-overflow: ellipsis;
+transition: transform 0.1s;
+}
+
+.tarjeta:hover {
+    transform: translateX(-0.2px);
+   box-shadow: 0 8px 16px rgba(71, 71, 71, 0.7); /* Sombra negra al hacer hover */
+}
+
+/* Imagen en la tarjeta */
+.tarjeta img {
+  grid-row-start:1;
+    width: 100%;
+    height:100%;
+    align-items: center;
+    
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Título */
+.tarjeta h2 {
+  grid-row-start:2;
+    font-size: 40px;
+    margin: 15px 10px 5px;
+}
+
+/* Descripción */
+.tarjeta p {
+grid-row-start: 3;
+text-align: left; /* Alinea el texto a la izquierda */
+font-size: 13px;
+padding: 0 15px;
+color: #333;
+overflow: hidden; /* Oculta el texto que sobrepase */
+display: -webkit-box;
+-webkit-line-clamp: 4; /* Limita el número de líneas a 4 */
+line-clamp: 4; /* Limita el número de líneas a 4 */
+-webkit-box-orient: vertical;
+}
+
+/* Botón */
+.boton {
+    display: inline-block;
+    margin: 5px 5px 5px 5px;
+    padding: 8px 8px;
+    background-color: orange;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background 0.1s;
+}
+
+.boton:hover {
+    background-color: #fefc83;
+}
+
